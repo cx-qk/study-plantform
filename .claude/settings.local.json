@@ -6,7 +6,8 @@
       "Bash(openspec instructions:*)",
       "Bash(openspec status:*)",
       "Bash(bun add:*)",
-      "Bash(bunx shadcn@latest init -d)"
+      "Bash(bunx shadcn@latest init -d)",
+      "Bash(bunx shadcn@latest:*)"
     ]
   }
 }
