@@ -3,7 +3,8 @@
     "allow": [
       "WebFetch(domain:www.coursera.org)",
       "Bash(openspec new:*)",
-      "Bash(openspec instructions:*)"
+      "Bash(openspec instructions:*)",
+      "Bash(openspec status:*)"
     ]
   }
 }
