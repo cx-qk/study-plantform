@@ -1,6 +1,6 @@
 ## 1. Project Setup & Dependencies
 
-- [ ] 1.1 Install Supabase packages (`@supabase/supabase-js`, `@supabase/ssr`)
+- [x] 1.1 Install Supabase packages (`@supabase/supabase-js`, `@supabase/ssr`)
 - [ ] 1.2 Initialize and configure shadcn/ui (install CLI, configure `components.json`, add CSS variables)
 - [ ] 1.3 Install `lucide-react` for icons
 - [ ] 1.4 Create environment variables file (`.env.local`) with `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` placeholders
