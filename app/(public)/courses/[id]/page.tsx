@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { single } from "@/lib/supabase/helpers";
 import { Badge } from "@/components/ui/badge";
 import { LessonList } from "@/components/courses/LessonList";
 import { LessonListInteractive } from "@/components/courses/LessonListInteractive";
@@ -61,9 +62,9 @@ export default async function CourseDetailPage({
       {/* Course Header */}
       <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
         <div className="flex-1">
-          {course.categories && (
+          {single(course.categories) && (
             <Badge variant="secondary" className="mb-3">
-              {course.categories.name}
+              {single(course.categories)!.name}
             </Badge>
           )}
           <h1 className="text-3xl font-bold tracking-tight">{course.title}</h1>

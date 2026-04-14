@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { createClient } from "@/lib/supabase/server";
+import { single } from "@/lib/supabase/helpers";
 import { CourseCard } from "@/components/courses/CourseCard";
 import { CourseFilter } from "@/components/courses/CourseFilter";
 
@@ -71,7 +72,7 @@ export default async function CoursesPage({
               title={course.title}
               thumbnail_url={course.thumbnail_url}
               duration_minutes={course.duration_minutes}
-              category_name={course.categories?.name ?? null}
+              category_name={single(course.categories)?.name ?? null}
               lesson_count={course.lesson_count}
             />
           ))}

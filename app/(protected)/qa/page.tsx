@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { single } from "@/lib/supabase/helpers";
 import { redirect } from "next/navigation";
 import { QuestionCard } from "@/components/qa/QuestionCard";
 import { QuestionForm } from "@/components/qa/QuestionForm";
@@ -34,8 +35,8 @@ export default async function QAPage() {
       return {
         ...q,
         answer_count: count ?? 0,
-        author_name: q.profiles?.display_name ?? "Anonymous",
-        course_name: q.courses?.title ?? null,
+        author_name: single(q.profiles)?.display_name ?? "Anonymous",
+        course_name: single(q.courses)?.title ?? null,
       };
     })
   );

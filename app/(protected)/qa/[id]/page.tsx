@@ -1,5 +1,6 @@
 import { notFound, redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { single } from "@/lib/supabase/helpers";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -55,9 +56,9 @@ export default async function QuestionDetailPage({
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1">
               <h1 className="text-2xl font-bold">{question.title}</h1>
-              {question.courses && (
+              {single(question.courses) && (
                 <Badge variant="outline" className="mt-2">
-                  {question.courses.title}
+                  {single(question.courses)!.title}
                 </Badge>
               )}
             </div>
@@ -72,7 +73,7 @@ export default async function QuestionDetailPage({
           <p className="mt-4 whitespace-pre-wrap">{question.body}</p>
           <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
             <User className="h-3.5 w-3.5" />
-            <span>{question.profiles?.display_name ?? "Anonymous"}</span>
+            <span>{single(question.profiles)?.display_name ?? "Anonymous"}</span>
             <span>&middot;</span>
             <span>
               {new Date(question.created_at).toLocaleDateString("en-US", {
