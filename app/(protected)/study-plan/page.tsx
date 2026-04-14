@@ -40,13 +40,18 @@ export default async function StudyPlanPage() {
   // Get plan items for each plan
   const plansWithItems = await Promise.all(
     (plans ?? []).map(async (plan) => {
-      const { data: items } = await supabase
+      const { data: rawItems } = await supabase
         .from("study_plan_items")
         .select("id, course_id, courses(id, title)")
         .eq("plan_id", plan.id);
 
+      const items = (rawItems ?? []).map((i) => ({
+        ...i,
+        courses: single(i.courses),
+      }));
+
       // Calculate completion percentage based on enrollment progress
-      const itemCourseIds = (items ?? []).map((i) => i.course_id);
+      const itemCourseIds = items.map((i) => i.course_id);
       const relevantEnrollments = (enrollments ?? []).filter((e) =>
         itemCourseIds.includes(e.course_id)
       );

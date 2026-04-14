@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { single } from "@/lib/supabase/helpers";
 import { Hero } from "@/components/home/Hero";
 import { CourseCarousel } from "@/components/home/CourseCarousel";
 import { CategoryGrid } from "@/components/home/CategoryGrid";
@@ -23,7 +24,11 @@ export default async function HomePage() {
         .from("lessons")
         .select("*", { count: "exact", head: true })
         .eq("course_id", course.id);
-      return { ...course, lesson_count: count ?? 0 };
+      return {
+        ...course,
+        categories: single(course.categories),
+        lesson_count: count ?? 0,
+      };
     })
   );
 

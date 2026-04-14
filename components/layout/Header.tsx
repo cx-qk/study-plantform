@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BookOpen, Menu } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -67,23 +67,18 @@ export function Header({ user }: { user: User | null }) {
         <div className="flex items-center gap-2">
           {user ? (
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  className="relative h-8 w-8 rounded-full"
-                >
-                  <Avatar className="h-8 w-8">
-                    <AvatarImage
-                      src={user.user_metadata?.avatar_url}
-                      alt={user.user_metadata?.full_name ?? "User"}
-                    />
-                    <AvatarFallback>
-                      {(user.user_metadata?.full_name ?? "U")
-                        .charAt(0)
-                        .toUpperCase()}
-                    </AvatarFallback>
-                  </Avatar>
-                </Button>
+              <DropdownMenuTrigger className="relative h-8 w-8 rounded-full inline-flex items-center justify-center hover:bg-accent transition-colors">
+                <Avatar className="h-8 w-8">
+                  <AvatarImage
+                    src={user.user_metadata?.avatar_url}
+                    alt={user.user_metadata?.full_name ?? "User"}
+                  />
+                  <AvatarFallback>
+                    {(user.user_metadata?.full_name ?? "U")
+                      .charAt(0)
+                      .toUpperCase()}
+                  </AvatarFallback>
+                </Avatar>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">
                 <div className="px-2 py-1.5 text-sm font-medium">
@@ -104,9 +99,9 @@ export function Header({ user }: { user: User | null }) {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <Button asChild size="sm">
-              <Link href="/login">Sign In</Link>
-            </Button>
+            <Link href="/login" className={buttonVariants({ size: "sm" })}>
+              Sign In
+            </Link>
           )}
 
           {/* Mobile Menu */}
