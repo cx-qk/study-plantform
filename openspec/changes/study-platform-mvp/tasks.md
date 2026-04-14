@@ -59,33 +59,33 @@
 
 ## 8. Progress Tracking
 
-- [ ] 8.1 Install shadcn/ui components: Progress
-- [ ] 8.2 Implement lesson completion toggle (mark complete / mark incomplete) on course detail page
-- [ ] 8.3 Create server action to update progress_records and recalculate enrollment progress_pct
-- [ ] 8.4 Build progress dashboard page (`app/(protected)/progress/page.tsx`) with stats overview and per-course progress bars
-- [ ] 8.5 Create `components/progress/ActivityHistory.tsx` showing recent learning activities
-- [ ] 8.6 Create `components/progress/StreakBadge.tsx` showing consecutive learning days
+- [x] 8.1 Install shadcn/ui components: Progress
+- [x] 8.2 Implement lesson completion toggle (mark complete / mark incomplete) on course detail page
+- [x] 8.3 Create server action to update progress_records and recalculate enrollment progress_pct
+- [x] 8.4 Build progress dashboard page (`app/(protected)/progress/page.tsx`) with stats overview and per-course progress bars
+- [x] 8.5 Create `components/progress/ActivityHistory.tsx` showing recent learning activities
+- [x] 8.6 Create `components/progress/StreakBadge.tsx` showing consecutive learning days
 
 ## 9. Q&A System
 
-- [ ] 9.1 Create `components/qa/QuestionCard.tsx` showing title, author, date, answer count, course name
-- [ ] 9.2 Create `components/qa/QuestionForm.tsx` with title, body, optional course selector
-- [ ] 9.3 Build Q&A listing page (`app/(protected)/qa/page.tsx`) with question list and post form
-- [ ] 9.4 Create `components/qa/AnswerForm.tsx` for posting answers
-- [ ] 9.5 Build question detail view with answers list and answer form
-- [ ] 9.6 Implement delete own question/answer functionality
+- [x] 9.1 Create `components/qa/QuestionCard.tsx` showing title, author, date, answer count, course name
+- [x] 9.2 Create `components/qa/QuestionForm.tsx` with title, body, optional course selector
+- [x] 9.3 Build Q&A listing page (`app/(protected)/qa/page.tsx`) with question list and post form
+- [x] 9.4 Create `components/qa/AnswerForm.tsx` for posting answers
+- [x] 9.5 Build question detail view with answers list and answer form
+- [x] 9.6 Implement delete own question/answer functionality
 
 ## 10. User Profile
 
-- [ ] 10.1 Build profile page (`app/(protected)/profile/page.tsx`) with avatar, name, email display
-- [ ] 10.2 Create `components/profile/EnrolledCourses.tsx` summary with progress bars
-- [ ] 10.3 Create `components/profile/Settings.tsx` with display name edit form
-- [ ] 10.4 Add sign-out button to profile page
+- [x] 10.1 Build profile page (`app/(protected)/profile/page.tsx`) with avatar, name, email display
+- [x] 10.2 Create `components/profile/EnrolledCourses.tsx` summary with progress bars
+- [x] 10.3 Create `components/profile/Settings.tsx` with display name edit form
+- [x] 10.4 Add sign-out button to profile page
 
 ## 11. Polish & Integration
 
-- [ ] 11.1 Update metadata (title, description) in root layout and per-page
-- [ ] 11.2 Add loading states (skeletons/spinners) for data-fetching pages
-- [ ] 11.3 Add error boundaries and 404 page for invalid course IDs
-- [ ] 11.4 Verify all protected routes redirect unauthenticated users correctly
-- [ ] 11.5 Test responsive layout across mobile, tablet, and desktop viewports
+- [x] 11.1 Update metadata (title, description) in root layout and per-page
+- [x] 11.2 Add loading states (skeletons/spinners) for data-fetching pages
+- [x] 11.3 Add error boundaries and 404 page for invalid course IDs
+- [x] 11.4 Verify all protected routes redirect unauthenticated users correctly
+- [x] 11.5 Test responsive layout across mobile, tablet, and desktop viewports

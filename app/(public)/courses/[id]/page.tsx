@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { Badge } from "@/components/ui/badge";
 import { LessonList } from "@/components/courses/LessonList";
+import { LessonListInteractive } from "@/components/courses/LessonListInteractive";
 import { EnrollButton } from "@/components/courses/EnrollButton";
 import { BookOpen, Clock } from "lucide-react";
 
@@ -89,10 +90,15 @@ export default async function CourseDetailPage({
       {/* Lessons */}
       <div className="mt-10">
         <h2 className="text-xl font-semibold mb-4">Course Content</h2>
-        <LessonList
-          lessons={lessons ?? []}
-          completedLessonIds={completedLessonIds}
-        />
+        {enrollment ? (
+          <LessonListInteractive
+            lessons={lessons ?? []}
+            courseId={id}
+            completedLessonIds={completedLessonIds}
+          />
+        ) : (
+          <LessonList lessons={lessons ?? []} />
+        )}
       </div>
     </div>
   );
