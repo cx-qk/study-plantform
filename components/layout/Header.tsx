@@ -85,16 +85,20 @@ export function Header({ user }: { user: User | null }) {
                   {user.user_metadata?.full_name ?? "User"}
                 </div>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link href="/profile">Profile</Link>
+                <DropdownMenuItem render={<Link href="/profile" />}>
+                  Profile
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <form action="/auth/signout" method="POST" className="w-full">
-                    <button type="submit" className="w-full text-left">
-                      Sign Out
-                    </button>
-                  </form>
+                <DropdownMenuItem
+                  onClick={() => {
+                    const form = document.createElement("form");
+                    form.method = "POST";
+                    form.action = "/auth/signout";
+                    document.body.appendChild(form);
+                    form.submit();
+                  }}
+                >
+                  Sign Out
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -106,11 +110,9 @@ export function Header({ user }: { user: User | null }) {
 
           {/* Mobile Menu */}
           <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle menu</span>
-              </Button>
+            <SheetTrigger className="md:hidden inline-flex items-center justify-center h-8 w-8 rounded-lg hover:bg-accent transition-colors">
+              <Menu className="h-5 w-5" />
+              <span className="sr-only">Toggle menu</span>
             </SheetTrigger>
             <SheetContent side="right" className="w-64">
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>

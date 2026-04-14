@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -20,11 +20,9 @@ export function PlanForm() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button>
-          <Plus className="mr-2 h-4 w-4" />
-          New Plan
-        </Button>
+      <DialogTrigger className={buttonVariants()}>
+        <Plus className="mr-2 h-4 w-4" />
+        New Plan
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -32,18 +32,16 @@ export function AddCourseToPlan({ planId, enrolledCourses }: Props) {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button variant="outline" size="sm">
-          <Plus className="mr-1 h-3 w-3" />
-          Add Course
-        </Button>
+      <DialogTrigger className={buttonVariants({ variant: "outline", size: "sm" })}>
+        <Plus className="mr-1 h-3 w-3" />
+        Add Course
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Add Course to Plan</DialogTitle>
         </DialogHeader>
         <div className="space-y-4">
-          <Select value={courseId} onValueChange={setCourseId}>
+          <Select value={courseId} onValueChange={(v) => setCourseId(v ?? "")}>
             <SelectTrigger>
               <SelectValue placeholder="Select a course" />
             </SelectTrigger>

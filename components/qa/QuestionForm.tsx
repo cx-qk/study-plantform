@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -31,11 +31,9 @@ export function QuestionForm({ courses }: Props) {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button>
-          <Plus className="mr-2 h-4 w-4" />
-          Ask Question
-        </Button>
+      <DialogTrigger className={buttonVariants()}>
+        <Plus className="mr-2 h-4 w-4" />
+        Ask Question
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
