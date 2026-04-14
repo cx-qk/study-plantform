@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { single } from "@/lib/supabase/helpers";
 import { redirect } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -43,8 +44,8 @@ export default async function ProgressPage() {
   const activities = (recentProgress ?? []).map((p) => ({
     id: p.id,
     completed_at: p.completed_at,
-    lesson_title: p.lessons?.title ?? "Unknown lesson",
-    course_title: p.courses?.title ?? "Unknown course",
+    lesson_title: single(p.lessons)?.title ?? "Unknown lesson",
+    course_title: single(p.courses)?.title ?? "Unknown course",
   }));
 
   // Calculate streak
@@ -157,7 +158,7 @@ export default async function ProgressPage() {
                     href={`/courses/${enrollment.course_id}`}
                     className="text-sm font-medium hover:underline"
                   >
-                    {enrollment.courses?.title ?? "Unknown course"}
+                    {single(enrollment.courses)?.title ?? "Unknown course"}
                   </Link>
                   <span className="text-sm text-muted-foreground">
                     {enrollment.progress_pct}%

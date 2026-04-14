@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { single } from "@/lib/supabase/helpers";
 import { redirect } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -33,14 +34,11 @@ export default async function ProfilePage() {
 
   const enrollmentList = (enrollments ?? [])
     .filter((e) => e.courses)
-    .map((e) => {
-      const course = Array.isArray(e.courses) ? e.courses[0] : e.courses;
-      return {
-        course_id: e.course_id,
-        progress_pct: e.progress_pct,
-        course_title: course?.title ?? "Unknown",
-      };
-    });
+    .map((e) => ({
+      course_id: e.course_id,
+      progress_pct: e.progress_pct,
+      course_title: single(e.courses)?.title ?? "Unknown",
+    }));
 
   const displayName =
     profile?.display_name || user.user_metadata?.full_name || "User";

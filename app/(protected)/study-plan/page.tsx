@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { single } from "@/lib/supabase/helpers";
 import { redirect } from "next/navigation";
 import { PlanCard } from "@/components/study-plan/PlanCard";
 import { PlanForm } from "@/components/study-plan/PlanForm";
@@ -31,7 +32,10 @@ export default async function StudyPlanPage() {
 
   const enrolledCourses = (enrollments ?? [])
     .filter((e) => e.courses)
-    .map((e) => ({ id: e.courses!.id, title: e.courses!.title }));
+    .map((e) => {
+      const course = single(e.courses)!;
+      return { id: course.id, title: course.title };
+    });
 
   // Get plan items for each plan
   const plansWithItems = await Promise.all(
